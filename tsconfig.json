@@ -9,7 +9,7 @@
     "baseUrl": "."
   },
   "include": [
-    "./src/*",
-    "./types/common.ts"
+    "server/*",
+    "types/*" 
   ]
 }
