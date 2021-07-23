@@ -2,9 +2,10 @@ import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
 
-import fetch from 'isomorphic-fetch';
+// import fetch from 'isomorphic-fetch';
 import { config } from 'dotenv';
 
+import "./database/mongo/db";
 
 config();
 
@@ -12,6 +13,7 @@ const app = express();
 app.use(helmet()); // sets various security headers 
 app.use(express.json()); // parses incoming json request payloads
 app.use(cors()); // allow cross origin requests
+
 
 const PORT = process.env.PORT || 9001;
 const PROD = process.env.NODE_ENV === 'production';
