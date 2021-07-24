@@ -4,7 +4,8 @@ import { Course, Rider, Horse, Result, Target } from "./types";
 const { Schema, model } = mongoose;
 
 const RidersSchema = new Schema<Rider>({
-    fullName: { type: String, required: true }
+    fullName: { type: String, required: true },
+    club: { type: String }
 });
 
 const HorsesSchema = new Schema<Horse>({
@@ -19,8 +20,7 @@ const TargetsSchema = new Schema<Target>({
 })
 
 const CoursesSchema = new Schema<Course>({
-    name: String,
-    run_date: Date,
+    name: { type: String, required: true },
     targets: [TargetsSchema]
 });
 
@@ -28,6 +28,7 @@ const ResultsSchema = new Schema<Result>({
     rider_id: { type: Schema.Types.ObjectId, required: true },
     horse_id: { type: Schema.Types.ObjectId, required: true },
     course_id: { type: Schema.Types.ObjectId, required: true },
+    date: { type: Date, required: true },
     points: [TargetsSchema]
 });
 

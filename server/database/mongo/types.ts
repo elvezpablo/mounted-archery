@@ -1,5 +1,6 @@
 type Rider = {
     fullName: string;
+    club?: string;
 }
 
 type Horse = {
@@ -8,22 +9,23 @@ type Horse = {
 
 type Target = {
     name: string;
-    type: string;
-    points: number;
-    points_possible: number;
+    type?: string;
+    points?: number;
+    points_possible?: number;
 }
+
+type Course = {
+    name: string;
+    targets: Target[];
+}
+
 
 type Result = {
     person_id: string;
     horse_id: string;
     course_id: string;
+    date: Date;
     points: Target[];
-}
-
-interface Course {
-    name: string;
-    run_date: Date;
-    targets: Target[];
 }
 
 export {
