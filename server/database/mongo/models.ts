@@ -1,18 +1,25 @@
 import { Riders } from "./schemas";
-import { Rider, ObjectId } from "./types";
-
+import { Rider } from "./types";
 
 // TODO: figure out if you can pick the attributes from the 
 // Rider type to use as arguments 
 // - you can they are called projections and are the second argument of the find
-export const postRiderModel = async (rider: Rider) => {
-    const newRider = new Riders(rider);
+
+type NewRider = Omit<Rider, "_id">;
+
+export const postRiderModel = async (fullName: string, club: string) => {
+    const r: NewRider = {
+        fullName,
+        club
+    }
+    const newRider = new Riders(r);
     await newRider.save();
-    return newRider;
+
+    return newRider.toJSON({ "versionKey": false });
 }
 
 export const getAllRidersModel = async () => {
-    const riders = await Riders.find({}).lean();
+    const riders = await Riders.find({}, { "__v": 0 }).lean();
     return riders;
 }
 

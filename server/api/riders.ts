@@ -1,7 +1,13 @@
 import express from 'express';
 import { Types } from 'mongoose';
 import { ObjectId } from '../database/mongo/types';
-import { getRiderModel, getAllRidersModel, postRiderModel, putRiderModel, deleteRiderModel } from '../database/mongo/models';
+import {
+    getRiderModel,
+    getAllRidersModel,
+    postRiderModel,
+    putRiderModel,
+    deleteRiderModel
+} from '../database/mongo/models';
 
 const router = express.Router();
 // Good article that doesn't work for typing express responses 
@@ -14,10 +20,19 @@ const router = express.Router();
 // const isRequestWithId = (query: any): query is RequestWithId => {
 //     return (query._id && String(query._id).length > 0);
 // }
+router.post('/riders', async (req, res) => {
+    const { fullName, club } = req.body;
+
+    if (!fullName || fullName.length === 0) {
+        res.status(400).send('Fullname is invalid');
+    }
+    const rider = await postRiderModel(fullName, club);
+    res.status(200).send(rider);
+});
 
 router.get('/riders', async (req, res) => {
     const riders = await getAllRidersModel();
-    res.send(riders)
+    res.send(riders);
 })
 
 router.get('/riders/:id', async (req, res) => {
@@ -35,8 +50,5 @@ router.get('/riders/:id', async (req, res) => {
 
 })
 
-router.post('/riders', async (req, res) => {
-
-});
 
 export default router;
