@@ -1,5 +1,5 @@
 import { Riders } from "./schemas";
-import { Rider } from "./types";
+import { Rider, ObjectId } from "./types";
 
 
 // TODO: figure out if you can pick the attributes from the 
@@ -11,11 +11,19 @@ export const postRiderModel = async (rider: Rider) => {
     return newRider;
 }
 
-export const getRiderModel = async (id: string) => {
-    const rider = await Riders.find({ _id: id }).lean();
-    // TODO: get all results for a rider 
+export const getAllRidersModel = async () => {
+    const riders = await Riders.find({}).lean();
+    return riders;
 }
 
+export const getRiderModel = async (_id: string) => {
+    try {
+        const rider = await Riders.find({ _id }).lean();
+        return rider;
+    } catch (e) {
+        return null;
+    }
+}
 
 export const putRiderModel = async (rider: Rider) => {
     // TODO: what is the best strategy to include the mongo _id field? 

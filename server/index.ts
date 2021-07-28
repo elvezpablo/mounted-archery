@@ -4,8 +4,8 @@ import helmet from 'helmet';
 
 // import fetch from 'isomorphic-fetch';
 import { config } from 'dotenv';
-
 import "./database/mongo/db";
+import RidersApi from "./api/riders";
 
 config();
 
@@ -26,6 +26,8 @@ app.post('/', async (req, res) => {
 app.get(`/`, async (req, res) => {
     res.send(JSON.stringify({ method: "GET" }, null, 2));
 })
+
+app.use('/api', RidersApi);
 
 app.listen(PORT, () => {
     console.log('Server Started on PORT: ', PORT)

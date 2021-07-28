@@ -34,6 +34,6 @@ Here's an example for the weather data
 
 `db.weather.find({callLetters: 'PLAT'}, {elevation: 1, _id: 0, "visibility.distance.value": 1})`
 
-## React Typescript (for later)
+## React & Typescript
 
 https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/forms_and_events/
