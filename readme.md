@@ -1,5 +1,12 @@
 # Backend Interview Template
 
+## Good Links
+
+1. https://liuhao.im/english/2018/06/12/
+   use-node-express-with-typescript.html
+2. https://auth0.com/blog/node-js-and-typescript-tutorial-build-a-crud-api/#Create-Express-Controllers
+3. (Example of Mongoose with TypeScript and MongoDb)[https://gist.github.com/brennanMKE/ee8ea002d305d4539ef6]
+
 ## Mongo Notes
 
 ## Mongoose
@@ -11,6 +18,10 @@ e.g.
 `mongodb://localhost:27017/practice`
 
 The database connected to would be `practice` the collections map to Mongoose models in that database.
+
+### Nested Objects
+
+1. https://stackoverflow.com/questions/39596625/nested-objects-in-mongoose-schemas
 
 ### Typescript
 
